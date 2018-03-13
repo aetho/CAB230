@@ -1,0 +1,19 @@
+body {
+    /* Resetting margins and paddings */
+    padding: 0;
+    margin: 0;
+    /* Setting up grid display */
+    display: grid;
+    grid-template-rows: 64px;
+}
+
+.header {
+    border: 1px solid black;
+    /* Setting up grid display */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Positioning the header */
+    grid-row: 1;
+    /* Align items inside header*/
+    align-items: center;
+}
