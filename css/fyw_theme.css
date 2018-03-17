@@ -1,0 +1,53 @@
+/* Import Roboto font from google */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+:root {
+    /* Setting theme colours */
+    --primary-normal: 3, 155, 229;
+    --primary-light: 99, 204, 255;
+    --primary-dark: 0, 109, 179;
+    --primary-text: 55, 71, 79;
+    --secondary-text: 255, 255, 255;
+}
+
+body {
+    /* Resetting margins and paddings */
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    color: rgb(var(--primary-text));
+    font-family: 'Roboto', Verdana, sans-serif;
+}
+
+input {
+    outline: none;
+    color: rgb(var(--primary-text));
+}
+
+input[type=text] {
+    width: 256px;
+    height: 1em;
+    border: none;
+    padding: 8px;
+    border-bottom: 2px solid rgb(128, 128, 128);
+}
+
+input[type=text]:focus {
+    border-bottom: 2px solid rgb(var(--primary-normal));
+    box-shadow: 0px 2px 3px 1px rgba(128, 128, 128, 0.3);
+}
+
+input[type=submit] {
+    width: 86px;
+    height: 32px;
+    border: none;
+    border: 2px solid rgb(var(--primary-normal));
+    border-radius: 3px;
+    color: rgb(var(--primary-normal));
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: rgba(255, 255, 255, 0.83);
+    box-shadow: 0px 2px 1px rgba(128, 128, 128, 0.3);
+}
