@@ -1,357 +1,47 @@
-body {
+main {
     display: flex;
     flex-direction: column;
-    /* Set background-colour */
-    background: #f5f5f5;
-}
-
-header {
-    display: flex;
-    justify-content: center;
-    height: 72px;
-    /* Make width 100% of viewport-width */
-    width: 100vw;
-    /* Set position to fixed so header remains on screen */
-    position: fixed;
-    /* Set background-colour */
-    background-color: #69e2ff;
-    /* Set box shadow to achieve elevation effect */
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-main {
-    border: 1px solid rgb(0, 0, 0);
-    width: 1024px;
-    margin: auto;
-    margin-top: 72px;
-}
-
-.header-section {
-    /* Margin for whitespaces */
-    margin-left: 16px;
-}
-
-.header-content {
-    display: flex;
-    flex-direction: row;
-    /* Center children of 'header-content' class */
-    align-items: center;
-    /* Set min and max width */
-    min-width: 1024px;
-    max-width: 1024px;
-}
-
-.search {
-    display: flex;
-    flex-direction: row;
-    /* Center children of 'search' class vertically */
-    align-items: center;
-}
-
-.search-suburb {
-    display: flex;
-    flex-direction: row;
-    min-width: 152px;
-    /* Center children of 'search-suburb' class */
-    align-items: center;
-}
-
-.search-suburb,
-.search-name,
-.search-rating {
-    margin-right: 8px;
-}
-
-.suburb-location {
-    margin: 0;
-    /* Make the 'use my location' button look like
-    * the suburb-input
-    */
-    background-color: #ffffff;
-    border-bottom: 2px solid rgb(128, 128, 128);
-    height: 32px;
-    display: flex;
-    align-items: center;
-    /* Change box sizing mode so padding
-     * and border is accounted for in the box dimensions
-     */
-    box-sizing: border-box;
-}
-
-.suburb-input:focus+.suburb-location {
-    /* Highlight the suburb-input and location when input is focused */
-    border-bottom: 2px solid #00b0ff;
-    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.3);
-}
-
-.search .suburb-input {
-    /* Setting width of suburb input field */
-    width: 128px;
-}
-
-.search>.search-rating {
-    /* Changing how search-rating looks */
-    width: 128px;
-    height: 32px;
-    background-color: #ffffff;
-    border-bottom: 2px solid #808080;
-    font-size: 10pt;
-    color: #37474f;
-    /* Centering rating content vertically */
-    align-items: center;
-    padding-left: 8px;
-    /* Change box sizing mode so padding
-     * and border is accounted for in the box dimensions
-     */
-    box-sizing: border-box;
-}
-
-.search>.search-name {
-    /* Setting width of wi-fi name input field */
-    min-width: 240px;
-}
-
-.auth {
-    /* Setting up grid for auth*/
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     width: 100%;
+    height: 100vh;
 }
 
-.auth>div {
-    display: flex;
-    margin-right: 16px;
-}
-
-.auth input[value="Login"] {
-    margin-right: 8px;
-}
-
-.search-suburb,
-.search-rating {
-    /* Set position of suburb and rating to relative
-     * so the children can be positioned relative
-     * to wherever the suburb and ratings are.
-     */
+#map-container {
     position: relative;
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-.suburb-dropdown-content,
-.rating-dropdown-content {
-    /* Setting display to none as default */
-    display: none;
-    /* Set position to absolute so it goes on top */
-    position: absolute;
-    /* Set appearance */
-    background-color: #f9f9f9;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    /* Set z-index so that it is on top of other elements */
-    z-index: 1;
-    /* Position dropdown */
-    top: 32px;
-    left: 0px;
+#map {
+    height: 100%;
 }
 
-.suburb-dropdown-content {
-    /* Set dropdown width */
-    min-width: 152px;
-    /* Set max-height and overscroll-y to scroll
-     * to allow scrolling 
-     */
-    max-height: 60vh;
-    overflow-y: scroll;
+#result-list {
+    /* padding-top: 250px; */
+    height: 100%;
+    overflow-y: auto;
 }
 
-.rating-dropdown-content {
-    /* Set dropdown width */
-    min-width: 128px;
-}
-
-.suburb-dropdown-content a,
-.rating-dropdown-content a {
-    /* Set appearance of each dropdown item
-     * and change how it is displayed
-     */
-    color: #37474f;
-    padding: 8px;
-    text-decoration: none;
-    display: block;
-}
-
-.suburb-dropdown-content a:hover,
-.rating-dropdown-content a:hover {
-    /* Highlights when dropdown item is hovered */
-    background-color: rgba(105, 226, 255, 0.2)
-}
-
-.search-rating:hover .rating-dropdown-content {
-    /* Show dropdown when hovering */
-    display: block;
-}
-
-.rating-dropdown {
-    line-height: 32px;
-}
-
-.home-btn {
-    margin-right: 8px;
-}
-
-@supports (display: grid) {
-    body {
-        /* Set-up grid */
-        display: grid;
-        grid-template: 72px 1fr / 1fr;
-    }
-    header {
-        grid-row: 1 / span 1;
-        grid-column: 1 / span 3;
-        /* Set-up grid */
-        display: grid;
-        grid-template: 1fr / 1fr;
-    }
+@media only screen and (min-width: 860px) {
     main {
-        margin: 0;
-        /* Position main */
-        grid-row: 2 / span 1;
-        grid-column: 1 / span 1;
-        border: 1px solid rgb(0, 0, 0);
-        /* Set-up grid */
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    .header-content {
-        /* Position 'header-content' class*/
-        grid-column: 1 / span 1;
-        /* Center children of 'header-content' class */
-        justify-items: center;
-        align-items: center;
-        /* Set-up grid */
-        display: grid;
-        grid-template: 1fr / 1fr 206px;
-        grid-column-gap: 8px;
-    }
-    .search {
-        /* Set-up grid */
-        display: grid;
-        grid-row-gap: 8px;
-        grid-column-gap: 8px;
-        grid-template-columns: 64px 168px 256px 128px 86px;
-        /* Center children of 'search' class vertically */
-        align-items: center;
-    }
-    .header-section {
-        /* Make header width 100% of parent width */
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        margin: 0px;
+        height: 100vh;
     }
-    .search-suburb {
-        /* Set-up grid */
-        display: grid;
-        grid-template-columns: 144px 24px;
-        /* Center children of 'search-suburb' class */
-        align-items: center;
-        justify-items: center;
-    }
-    .search-suburb,
-    .search-name,
-    .search-rating {
-        margin-right: 0px;
-    }
-    .suburb-location {
-        /* Make the 'use my location' button look like
-         * the suburb-input
-         */
-        height: 100%;
-        display: grid;
-        align-items: center;
-        justify-items: center;
-        /* Change box sizing mode so padding
-         * and border is accounted for in the box dimensions
-         */
-        box-sizing: border-box;
-    }
-    .search .suburb-input {
-        /* Setting width of suburb input field */
-        width: 128px;
-    }
-    .search>.search-rating {
-        /* Centering rating content vertically */
-        display: grid;
-        align-items: center;
-        padding-left: 8px;
-        /* Change box sizing mode so padding
-         * and border is accounted for in the box dimensions
-         */
-        box-sizing: border-box;
-        /* Disable text selection */
-        user-select: none;
-    }
-    .search>.search-name {
-        /* Setting width of wi-fi name input field */
-        width: 240px;
-    }
-    .auth>div {
-        /* Setting up grid for auth*/
-        display: grid;
-        grid-template: 1fr / 1fr 1fr;
-        grid-column-gap: 8px;
-    }
-    .auth input[value="Login"] {
-        margin-right: 0;
-    }
-    .search-suburb,
-    .search-rating {
-        /* Set position of suburb and rating to relative
-         * so the children can be positioned relative
-         * to wherever the suburb and ratings are.
-         */
+    #map-container {
         position: relative;
-    }
-    .suburb-dropdown-content,
-    .rating-dropdown-content {
-        /* Setting display to none as default */
-        display: none;
-        /* Set position to absolute so it goes on top */
-        position: absolute;
-        /* Set z-index so that it is on top of other elements */
+        height: 100%;
+        order: 2;
         z-index: 1;
-        /* Position dropdown */
-        top: 32px;
     }
-    .suburb-dropdown-content {
-        /* Set dropdown width */
-        min-width: 152px;
-        /* Set max-height and overscroll-y to scroll
-         * to allow scrolling 
-         */
-        max-height: 60vh;
-        overflow-y: scroll;
-    }
-    .rating-dropdown-content {
-        /* Set dropdown width */
-        min-width: 128px;
-    }
-    .search-rating:hover .rating-dropdown-content {
-        /* Show dropdown when hovering */
-        display: block;
-    }
-    .home-btn {
-        margin-right: 0;
-    }
-    @media screen and (min-width: 1024px) {
-        body {
-            grid-template: 72px 1fr / 1fr minmax(1024px, 1fr) 1fr;
-        }
-        main {
-            grid-column: 2 / span 1;
-        }
-        header {
-            grid-template: 1fr / 1fr 1024px 1fr;
-        }
-        .header-content {
-            grid-column: 2 / span 1;
-        }
+    #result-list {
+        order: 3;
+        flex-basis: 400px;
+        box-shadow: -3px 0px 6px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        overflow-y: auto;
+        z-index: 2
     }
 }
