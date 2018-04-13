@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/site_wide.css">
+    <title>Find your Wi-Fi - Header</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-section header-content">
+            <div class="dropdown dropdown-select" id="menu">
+                <div class="dropdown-trigger" id="menu-trigger">
+                    <i class="material-icons">menu</i>
+                </div>
+                <nav class="dropdown-content list" id="menu-content">
+                    <a class="list-item" id="menu-home">
+                        <i class="material-icons list-icon">home</i>Home
+                    </a>
+                    <a class="list-item" id="menu-sign-in">
+                        <i class="material-icons list-icon">person</i>Sign-in
+                    </a>
+                    <a class="list-item" id="menu-sign-up">
+                        <i class="material-icons list-icon">create</i>Sign-up
+                    </a>
+                </nav>
+            </div>
+
+            <div id="header-logo">
+                <a href="#">
+                    <span>
+                        <i class="material-icons">wifi</i>
+                    </span>
+                    <span>Find Your Wi-Fi</span>
+                </a>
+            </div>
+
+            <div class="dropdown" id="search">
+                <div class="dropdown-trigger" id="search-trigger">
+                    <i class="material-icons">search</i>
+                </div>
+                <div class="dropdown-content" id="search-content">
+                    <form action="/fyw_results.html">
+                        <div class="dropdown dropdown-select" id="search-mode">
+                            <div class="dropdown-trigger" id="search-mode-trigger">
+                                <label>Search by</label>
+                                <input name="searchMode" type="text" value="Name" readonly>
+                            </div>
+                            <div class="dropdown-content" id="search-mode-content">
+                                <div class="list">
+                                    <a class="list-item">Name</a>
+                                    <a class="list-item">Suburb</a>
+                                    <a class="list-item">Rating</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="search-field">
+                            <label>Name</label>
+                            <input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName">
+                        </div>
+                        <div id="search-submit">
+                            <input type="submit" value="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+    </main>
+    <script src="./js/site_wide.js"></script>
+</body>
+
+</html>
