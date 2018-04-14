@@ -35,6 +35,91 @@ function FindParentWithClass(element, parentClass) {
     }
 }
 
+function ValidateField(form, field) {
+    var input = field.getElementsByTagName('input')[0];
+    var error = field.getElementsByClassName('form-error')[0];
+    var hasError = false;
+
+    // Validate text-only-inputs
+    if (input.classList.contains('text-only-input')) {
+        // Check if input value contains non-alphabetic characters
+        if (!input.value.match(/^[a-zA-z]+$/) || input.value.match(/\\/)) {
+            if (error) {
+                hasError = true;
+                error.innerHTML = 'Please use letters.';
+                error.classList.add('form-error-active');
+            }
+        }
+    }
+
+    // Validate email-inputs
+    if (input.classList.contains('email-input')) {
+        // Check if input value follows format of an email address
+        if (!input.value.match(/^[a-zA-Z](\w|\.)+@[a-zA-Z]+\.[a-zA-Z]+$/)) {
+            if (error) {
+                hasError = true;
+                error.innerHTML = 'Please enter a valid email.';
+                error.classList.add('form-error-active');
+            }
+        }
+    }
+
+    // Validate password-inputs
+    if (input.classList.contains('password-input')) {
+        // Check if input value contain characters other than a-z, A-Z, 0-9 and .
+        if (!input.value.match(/^([a-zA-Z0-9]|\.)+$/)) {
+            if (error) {
+                hasError = true;
+                error.innerHTML = 'Please only use letters, numbers and periods.';
+                error.classList.add('form-error-active');
+            }
+        }
+    }
+
+    // Validate password-confirm-inputs    
+    if (input.classList.contains('password-confirm-input')) {
+        var passwordInput = form.getElementsByClassName('password-input')[0];
+        if (passwordInput) {
+            if (passwordInput.value != input.value) {
+                if (error) {
+                    hasError = true;
+                    error.innerHTML = 'Passwords do not match.';
+                    error.classList.add('form-error-active');
+                }
+            }
+        }
+    }
+
+    // Validate required inputs
+    if (input.classList.contains('required-input')) {
+        if (input.value.length < 1) {
+            if (error) {
+                hasError = true;
+                error.innerHTML = 'Please fill this field.';
+                error.classList.add('form-error-active');
+            }
+        }
+    }
+
+    if (error) {
+        // Hide error message if no error
+        if (!hasError) {
+            error.classList.remove('form-error-active');
+        }
+    }
+}
+
+/* Validate a form's required fields */
+function ValidateForm(formID) {
+    var form = document.getElementById(formID);
+    if (form) {
+        var fields = form.getElementsByClassName('form-field');
+        for (var i = 0; i < fields.length; i++) {
+            ValidateField(form, fields[i]);
+        }
+    }
+}
+
 /* Handling normal dropdowns
  * normal dropdowns should have the following inside the dropdown container:
  *      1. a trigger element        (required)
@@ -167,9 +252,23 @@ document.addEventListener('keyup', function (e) {
     // Event delegation to handle dynamically added dropdowns
     // Handle filter dropdowns
     HandleFilterDropdown(e);
+
+    // Event delegation to handle dynamically added inputs
+    // If change target is from a form validate it.
+    var targetInput = e.target;
+    var targetField = FindParentWithClass(e.target, 'form-field');
+    var targetForm = FindParentWithClass(e.target, 'form');
+    if (targetForm && targetField) ValidateField(targetForm, targetField);
 });
 
-
+document.addEventListener('keydown', function (e) {
+    // Event delegation to handle dynamically added inputs
+    // If change target is from a form validate it.
+    var targetInput = e.target;
+    var targetField = FindParentWithClass(e.target, 'form-field');
+    var targetForm = FindParentWithClass(e.target, 'form');
+    if (targetForm && targetField) ValidateField(targetForm, targetField);
+});
 
 /* Have to add listener to document because adding it to the
  * search-mode input does not work on IE11
@@ -191,8 +290,8 @@ document.addEventListener('customChange', function (e) {
 
             // Create container for field
             var searchField = document.createElement('div');
+            searchField.classList.add('form-field');
             searchField.id = 'search-field';
-            searchField.style.marginBottom = '16px';
 
             // Add relevant fields to container
             switch (searchModeInput.value.toLowerCase()) {
@@ -206,11 +305,17 @@ document.addEventListener('customChange', function (e) {
                     input.setAttribute('type', 'text');
                     input.setAttribute('placeholder', 'E.g. 7th Brigade Park, Chermside');
                     input.setAttribute('name', 'searchName');
+                    input.classList.add('required-input');
                     input.id = 'field-input-name';
+
+                    // Create error container
+                    var error = document.createElement('div');
+                    error.classList.add('form-error');
 
                     // Append elements
                     searchField.appendChild(label);
                     searchField.appendChild(input);
+                    searchField.appendChild(error);
                     searchForm.appendChild(searchField);
                     break;
                 case 'suburb':
@@ -235,11 +340,17 @@ document.addEventListener('customChange', function (e) {
                     input.setAttribute('placeholder', 'E.g. Annerley, Forestlake, Brisbane...');
                     input.setAttribute('name', 'searchSuburb');
                     input.setAttribute('readonly', '');
+                    input.classList.add('required-input');
                     input.id = 'field-input-suburb';
-
-                    // Append label & input to trigger
+                    
+                    // Create error container
+                    var error = document.createElement('div');
+                    error.classList.add('form-error');
+                    
+                    // Append label, input and error to trigger
                     trigger.appendChild(label);
                     trigger.appendChild(input);
+                    trigger.appendChild(error);
 
                     // Append trigger to container
                     searchField.appendChild(trigger);
@@ -284,6 +395,7 @@ document.addEventListener('customChange', function (e) {
 
                     // Append list to content container
                     dropdownContent.appendChild(list);
+
                     // Append content container to field container
                     searchField.appendChild(dropdownContent);
 
@@ -311,11 +423,18 @@ document.addEventListener('customChange', function (e) {
                     input.setAttribute('placeholder', 'Select rating');
                     input.setAttribute('name', 'searchRating');
                     input.setAttribute('readonly', '');
+                    input.classList.add('required-input');
                     input.id = 'field-input-rating';
 
-                    // Append label & input to trigger
+
+                    // Create error container
+                    var error = document.createElement('div');
+                    error.classList.add('form-error');
+
+                    // Append label, input and error to trigger
                     trigger.appendChild(label);
                     trigger.appendChild(input);
+                    trigger.appendChild(error);
 
                     // Append trigger to container
                     searchField.appendChild(trigger);
@@ -357,6 +476,7 @@ document.addEventListener('customChange', function (e) {
             var submitBtn = document.createElement('input');
             submitBtn.setAttribute('type', 'submit');
             submitBtn.setAttribute('value', 'Search');
+            submitBtn.setAttribute('onclick', 'ValidateForm("search-form"); return false');
 
             // Append button to container
             submitContainer.appendChild(submitBtn);
@@ -365,5 +485,11 @@ document.addEventListener('customChange', function (e) {
             searchForm.appendChild(submitContainer);
         }
     }
-});
 
+    // Event delegation to handle dynamically added inputs
+    // If change target is from a form validate it.
+    var targetInput = e.target;
+    var targetField = FindParentWithClass(e.target, 'form-field');
+    var targetForm = FindParentWithClass(e.target, 'form');
+    if (targetForm && targetField) ValidateField(targetForm, targetField);
+});

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/site_wide.css">
     <link rel="stylesheet" href="./css/fyw_register.css">
-    <title>Find your Wi-Fi - Results</title>
+    <title>Find your Wi-Fi - Register</title>
 </head>
 
 <body>
@@ -45,9 +45,9 @@
                     <i class="material-icons">search</i>
                 </div>
                 <div class="dropdown-content" id="search-content">
-                    <form action="/fyw_results.html">
+                    <form class="form" id="search-form">
                         <div class="dropdown dropdown-select" id="search-mode">
-                            <div class="dropdown-trigger" id="search-mode-trigger">
+                            <div class="dropdown-trigger form-field" id="search-mode-trigger">
                                 <label>Search by</label>
                                 <input name="searchMode" type="text" value="Name" readonly>
                             </div>
@@ -59,20 +59,50 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="search-field">
+                        <div class="form-field" id="search-field">
                             <label>Name</label>
-                            <input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName">
+                            <input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName" class="required-input">
+                            <div class="form-error"></div>
                         </div>
                         <div id="search-submit">
-                            <input type="submit" value="Search">
+                            <input type="submit" value="Search" onclick="ValidateForm('search-form'); return false;">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </header>
-    <main id="main">
-        <div class="">Sign-up</div>
+    <main>
+        <form class="form" id="sign-up-form">
+            <div class="form-field" id="first-name-field">
+                <label class="h5">First Name</label>
+                <input type="text" placeholder="John" class="text-only-input required-input">
+                <div class="form-error"></div>
+            </div>
+            <div class="form-field" id="last-name-field">
+                <label class="h5">Last Name</label>
+                <input type="text" placeholder="Smith" class="text-only-input required-input">
+                <div class="form-error"></div>
+            </div>
+            <div class="form-field" id="email-field">
+                <label class="h5">Email</label>
+                <input type="text" placeholder="john@email.com" class="email-input required-input">
+                <div class="form-error"></div>
+            </div>
+            <div class="form-field" id="password-field">
+                <label class="h5">Password</label>
+                <input type="password" placeholder="Password" class="password-input required-input">
+                <div class="form-error"></div>
+            </div>
+            <div class="form-field" id="password-confirm-field">
+                <label class="h5">Confirm Password</label>
+                <input type="password" placeholder="Confirm password" class="password-confirm-input required-input">
+                <div class="form-error"></div>
+            </div>
+            <div class="form-field" id="submit-field">
+                <input type="submit" value="Sign up" onclick="ValidateForm('sign-up-form'); return false;">
+            </div>
+        </form>
     </main>
     <!-- <footer id="debug">hello</footer> -->
     <script src="./js/site_wide.js"></script>

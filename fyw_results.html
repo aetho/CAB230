@@ -45,9 +45,9 @@
                     <i class="material-icons">search</i>
                 </div>
                 <div class="dropdown-content" id="search-content">
-                    <form action="/fyw_results.html">
+                    <form class="form" id="search-form">
                         <div class="dropdown dropdown-select" id="search-mode">
-                            <div class="dropdown-trigger" id="search-mode-trigger">
+                            <div class="dropdown-trigger form-field" id="search-mode-trigger">
                                 <label>Search by</label>
                                 <input name="searchMode" type="text" value="Name" readonly>
                             </div>
@@ -59,19 +59,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="search-field">
+                        <div class="form-field" id="search-field">
                             <label>Name</label>
-                            <input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName">
+                            <input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName" class="required-input">
+                            <div class="form-error"></div>
                         </div>
                         <div id="search-submit">
-                            <input type="submit" value="Search">
+                            <input type="submit" value="Search" onclick="ValidateForm('search-form'); return false;">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </header>
-    <main id="main">
+    <main>
         <div id="map-container">
             <div id="map"></div>
         </div>
