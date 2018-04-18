@@ -20,7 +20,7 @@ body {
 }
 
 main {
-    padding-top: 64px;
+    padding: 64px 0px;
     /* Set box-sizing mode to border box to include padding
     * in width and height
     */
@@ -33,9 +33,12 @@ main {
     max-width: 100%;
 }
 
-header {
+header,
+footer {
     /* Make header persistent */
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: #2196f3;
     /* Set width to viewport width */
     width: 100vw;
@@ -45,7 +48,13 @@ header {
     max-width: 100%;
     height: 64px;
     z-index: 5;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);    
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    /* Unset top */
+    top: auto;
+    bottom: 0;
 }
 
 a,
@@ -58,7 +67,12 @@ a:visited {
     cursor: pointer;
 }
 
-input[type="text"] {
+label {
+    color: #808080;
+}
+
+input[type="text"],
+input[type="password"] {
     font-size: 1em;
     /* White-space */
     padding: 8px 8px;
@@ -76,7 +90,8 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
     /* Visual feedback that text-input is focused */
     border-bottom: 2px solid #2196f3;
 }
@@ -95,6 +110,29 @@ input[type="submit"] {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
     /* Visual feedback that this is a button */
     cursor: pointer;
+}
+
+/* Setting up some font size classes
+ */
+
+.h1 {
+    font-size: 2em;
+}
+
+.h2 {
+    font-size: 1.8em;
+}
+
+.h3 {
+    font-size: 1.6em;
+}
+
+.h4 {
+    font-size: 1.4em;
+}
+
+.h5 {
+    font-size: 1.2em;
 }
 
 .header-section {
@@ -153,7 +191,6 @@ input[type="submit"] {
 .list-item-multiline:hover {
     /* box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); */
     background-color: rgba(0, 0, 0, 0.1);
-    
 }
 
 .list-item-row {
@@ -176,6 +213,43 @@ input[type="submit"] {
     font-size: 2em;
     /* White-space */
     margin-right: 16px;
+}
+
+.form-error {
+    display: none;
+    width: 100%;
+    height: 32px;
+    margin-top: 8px;
+    padding: 8px;
+    /* Set box-sizing mode to border box to include padding
+     * in width and height
+     */
+    box-sizing: border-box;
+    border: 2px solid #f44336;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    font-size: 1em;
+}
+
+.form-error-active {
+    /* Show the error */
+    display: block;
+    /* Play the animation */
+    animation-iteration-count: 1;
+    animation-name: OpacityFadeIn;
+    animation-timing-function: ease-in;
+    animation-duration: 0.15s;
+}
+
+@keyframes OpacityFadeIn {
+    /* Set opacity to 0 at start */
+    0% {
+        opacity: 0;
+    }
+    /* Set opacity to 1 by the end of animation */
+    100% {
+        opacity: 1;
+    }
 }
 
 .dropdown {
@@ -284,7 +358,7 @@ input[type="submit"] {
 #search-mode,
 #search-field {
     /* Whitespace */
-    margin-bottom: 16px;
+    margin-bottom: 0px;
 }
 
 #search-mode-trigger,
@@ -329,13 +403,17 @@ input[type="submit"] {
     justify-content: center;
 }
 
-#debug {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #2196f3;
+#footer-list {
+    display: flex;
+    background-color: transparent;
+    color: #ffffff;
+    justify-content: center;
+}
+
+#footer-about-us,
+#footer-contact-us {
     height: 64px;
+    justify-content: center;
 }
 
 /* Styling for desktop/big screens sizes
@@ -423,5 +501,8 @@ input[type="submit"] {
         flex-grow: 3;
         /* White-space */
         margin-right: 16px;
+    }
+    #footer-list {
+        width: 320px;
     }
 }
