@@ -1,0 +1,819 @@
+/* Find your Wi-Fi article page stylesheet */
+
+/* Colour scheme
+ * Priamry: #2196f3
+ * Secondary: #6ec6ff
+ * Accent: #00e5ff
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+/* Importing Google's Roboto Font */
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/* Importing Google's Material Icons */
+
+/* Styling for mobile/small screen sizes
+ */
+
+/* HEADER */
+
+body {
+	height: 100%;
+	width: 100%;
+    /* Makes it easier to style site in such a way that it is responsive */
+    display: flex;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
+	justify-content: center;
+	background-color: #cce6ff;
+}
+
+
+header {
+    /* Make header persistent */
+    position: fixed;
+    background-color: #2196f3;
+    /* Set width to viewport width */
+    width: 100vw;
+    /* Clamp size to 100% so that there is no
+     * x-overflow when a scrollbar is present.
+     */
+    max-width: 100%;
+    height: 64px;
+    z-index: 5;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+a,
+a:visited {
+    /* Getting rid of underline*/
+    text-decoration: none;
+    /* Have anchor inherit its font colour */
+    color: inherit;
+    /* Visual feedback that this is 'clickable' */
+    cursor: pointer;
+}
+
+input[type="text"] {
+    font-size: 1em;
+    /* White-space */
+    padding: 8px 8px;
+    /* Clamp size to 100% so that there is no
+     * x-overflow when a scrollbar is present.
+     */
+    max-width: 100%;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #808080;
+    outline: none;
+    /* Set box-sizing mode to border box to include padding
+    * in width and height
+    */
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    /* Visual feedback that text-input is focused */
+    border-bottom: 2px solid #2196f3;
+}
+
+input[type="submit"] {
+    /* This prevents devices from using platform-native styles*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Overiding browser defaults */
+    border: 0;
+    border-radius: 2px;
+    padding: 8px 16px;
+    background-color: #2196f3;
+    color: #ffffff;
+    font-size: 1em;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    /* Visual feedback that this is a button */
+    cursor: pointer;
+}
+
+.header-section {
+    /* Set height to fill available space */
+    height: 100%;
+}
+
+.header-content {
+    /* Position header items */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Change header items colour */
+    color: #ffffff;
+}
+
+.list {
+    /* set background-color and color of list */
+    background-color: #ffffff;
+    color: #808080;
+    /* set width to fill available space */
+    width: 100%;
+}
+
+.list-item {
+    /* Set box-sizing mode to border box to include padding
+    * in width and height
+    */
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    /* line-height: 1.5em; */
+    padding: 0 16px;
+    /* Set display to flex to easily vertically center items */
+    display: flex;
+    align-items: center;
+}
+
+.list-item:hover {
+    /* Visual feedback for the user when hovering over list items */
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.list-item-multiline {
+    /* Set box-sizing mode to border box to include padding
+    * in width and height
+    */
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 16px;
+    /* Set display to flex to easily vertically center items */
+    display: block;
+    align-items: center;
+}
+
+.list-item-multiline:hover {
+    /* box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); */
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.list-item-row {
+    padding: 8px 0px;
+    width: 100%;
+}
+
+.list-item-title {
+    font-size: 1em;
+    color: #000000;
+}
+
+.list-item-subheading {
+    padding: 0;
+    font-size: 0.80em
+}
+
+.list-icon {
+    /* Sizing */
+    font-size: 2em;
+    /* White-space */
+    margin-right: 16px;
+}
+
+.dropdown {
+    color: #808080;
+    /* set position to relative so the dropdown content
+     * can be positioned relative to the dropdown container
+     */
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #ffffff;
+    /* Set position to absolute to position element
+    * in to relation to the document
+    */
+    position: absolute;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.dropdown-trigger {
+    /* Centering button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    /* Change cursor */
+    user-select: none;
+    cursor: pointer;
+}
+
+.dropdown-trigger i {
+    /* Styling icons inside dropdown-trigger */
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.dropdown-active {
+    /* Show the dropdown */
+    display: block;
+    /* Play the animation */
+    animation-iteration-count: 1;
+    animation-name: OpacityFadeIn;
+    animation-timing-function: ease-in;
+    animation-duration: 0.15s;
+}
+
+@keyframes OpacityFadeIn {
+    /* Set opacity to 0 at start */
+    0% {
+        opacity: 0;
+    }
+    /* Set opacity to 1 by the end of animation */
+    100% {
+        opacity: 1;
+    }
+}
+
+#header-logo {
+    /* Centering and sizing logo */
+    font-size: 1.5em;
+    text-align: center;
+    align-self: center;
+}
+
+#search,
+#menu {
+    /* Overiding position:relative from .dropdown */
+    position: static;
+}
+
+#menu-content {
+    /* Set position to absolute to position element
+     * in to relation to the document
+     */
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    /* Set width to viewport width */
+    width: 100vw;
+    /* Clamp size to 100% so that there is no
+     * x-overflow when a scrollbar is present.
+     */
+    max-width: 100%;
+}
+
+#search-content {
+    /* Set position to absolute to position element
+     * in to relation to the document
+     */
+    position: absolute;
+    top: 64px;
+    right: 0;
+    /* Whitespace */
+    padding: 16px 16px;
+    box-sizing: border-box;
+    /* Set width to viewport width */
+    width: 100vw;
+    /* Clamp size to 100% so that there is no
+     * x-overflow when a scrollbar is present.
+     */
+    max-width: 100%;
+}
+
+#search-mode,
+#search-field {
+    /* Whitespace */
+    margin-bottom: 16px;
+}
+
+#search-mode-trigger,
+#search-field,
+#search-field-trigger {
+    /* Set display to block becuase it's currently
+     * inheriting display:flex from its parent
+     */
+    display: block;
+}
+
+#search-mode-content,
+#search-mode-trigger,
+#search-mode input[type="text"],
+#search-field-content,
+#search-field-trigger,
+#search-field input[type="text"] {
+    /* Change box-sizing to border-box to make sure
+     * paddings and margins are included in width/height.
+     */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#search-mode input[type="text"],
+#search-field input[type="text"] {
+    /* Visual feedback that these are buttons */
+    cursor: pointer;
+}
+
+#search-field-content {
+    /* Set max-height so the list scrolls */
+    max-height: 50vh;
+    /* Set overflow-y to auto so the list scrolls */
+    overflow-y: auto;
+}
+
+#search-submit {
+    /* change display to flex so easily center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#debug {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2196f3;
+    height: 64px;
+}
+
+/* Styling for desktop/big screens sizes
+ */
+
+@media only screen and (min-width: 860px) {
+    .header-content {
+        /* Justifying content to the right */
+        justify-content: flex-end;
+    }
+    #header-logo {
+        /* Change flex order */
+        order: 1;
+        /* Make width fill available space to text-align easily */
+        width: 100%;
+        /* Align text to the left */
+        text-align: left;
+        /* White-space */
+        margin: 0 16px;
+    }
+    #menu {
+        /* Change flex order */
+        order: 2;
+        width: 420px;
+        /* Using 'width' alone doesn't seem to work for IE11 maybe
+         * because IE11 will use min-width despite having width specified
+         */
+        min-width: 420px;
+    }
+    #menu-trigger {
+        /* Hide trigger as it's no longer needed */
+        display: none;
+    }
+    #menu-content {
+        /* Easily get list items on 1 line */
+        display: flex;
+        /* Overiding position:absolute so flex position is used */
+        position: relative;
+        /* Justifying buttons */
+        justify-content: flex-end;
+        /* Overriding top: 64px */
+        top: 0;
+        /* Overiding background-color: #ffffff */
+        background-color: transparent;
+        /* Overiding box-shadow */
+        box-shadow: none;
+        /* Set height to match header height */
+        height: 64px;
+    }
+    #menu-content .list-item {
+        width: 140px;
+        /* Using 'width' alone doesn't seem to work for IE11 maybe
+         * because IE11 will use min-width despite having width specified
+         */
+        min-width: 140px;
+        /* Set height to 100% so that hover effect is covers menu height */
+        height: 100%;
+        /* Overiding color */
+        color: #ffffff;
+    }
+    #search {
+        /* Change flex order */
+        order: 3;
+    }
+    #search-content {
+        /* Override width fill */
+        max-width: 600px;
+    }
+    #search-content>form {
+        /* Make form width fill available space of parent*/
+        width: 100%;
+        display: flex;
+    }
+    #search-mode {
+        position: relative;
+        /* Setting inital width */
+        flex-basis: 100px;
+        /* Setting growth ratio */
+        flex-grow: 1;
+        /* white-space */
+        margin-right: 16px;
+    }
+    #search-field {
+        /* Setting growth ratio */
+        flex-grow: 3;
+        /* White-space */
+        margin-right: 16px;
+    }
+
+
+
+
+}
+
+/********** *******/
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+
+#map-container {
+    position: relative;
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#map {
+    height: 100%;
+}
+
+#result-list {
+    /* padding-top: 250px; */
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media only screen and (min-width: 860px) {
+    main {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100vh;
+    }
+    #map-container {
+        position: relative;
+        height: 100%;
+        order: 2;
+        z-index: 1;
+    }
+    #result-list {
+        order: 3;
+        flex-basis: 400px;
+        box-shadow: -3px 0px 6px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        overflow-y: auto;
+        z-index: 2
+    }
+}
+
+/* CONTENT */
+
+
+/* Main */
+#principal {
+	width: 60vw;
+	height: inherit;
+	background-color: white;
+	margin-top: 60px;
+	padding: 30px;
+	border: 1px solid lightgray;
+}
+/* ------ */
+
+/* Map and wifi data (name, address, suburb and rating) */
+
+	/* General div with both sections */
+#upper_part {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+	
+	/*** Maps ***/
+	
+#maps {
+	width: 100vw;
+	height: inherit;
+	margin-left: 2vw;
+	border: 5px solid lightgray; /* width style color */
+	border-radius: 6px;
+}
+
+#maps iframe {
+	width: 100%;
+	height: 100%;
+}
+
+	/*** Wifi data ***/
+	
+#data {
+	width: 100vw;
+	height: auto;
+	padding: 10px;
+	margin: 0 1vw 0 2vw;;
+	border: 0px solid lightgray;
+	border-radius: 7px;
+	background-color: white;
+	text-align: center;
+}
+
+#data div h5 {
+	margin-bottom: 3px;
+	font-family: 'Roboto';
+	font-size: 13pt;
+	font-style: bold;
+}
+
+/* Div with name and data of the wifi (one for each data section) */
+#data div{
+	margin-bottom: 10px;
+}
+
+/* Wifi info */
+.insert_data {
+	width: inherit;
+	height: 30px;
+	margin-bottom: 5px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	padding: 10px 7px 10px;
+	font-family: sans-serif;
+	font-size: 11pt;
+	font-style: normal;
+	color: #0073e6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Set stars sprite as background of rating stars div*/
+#insert_rating {
+	background: url("images/sprite_rating_stars.png") 0 -60px;
+}
+
+/* Modify the size of the rating stars div */
+.rating_stars {
+	width: 105px; /* Idk if we can do this. I have just look at the width
+						of the image and set the same for the div */
+	height: 20px;
+	margin: 2px 0px 6px;
+	/* Add -20px to the second parameter to change the star */
+	/* To implement this in the JS file use an array of images with the sprite */
+	background: url("images/sprite_rating_stars.png") 0 -60px;
+}
+
+	/*** User reviews ***/
+	
+/* General section */
+#reviews {
+	height: auto;
+	width: inherit;
+	border: 1px solid lightgray;
+	margin-bottom: 15px;
+	border-radius: 3px;
+	background-color: white;
+	overflow: auto;
+}
+
+/* Section with title and add review button */
+#rvw_header {
+	width: auto;
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 20px 40px 3px 20px; /* top right bottom left */
+}
+	
+
+#rvw_header h1{
+	color: #0073e6;
+	font-family: 'Roboto';
+	font-size: 17pt;
+}
+
+/* Class related to the new entrace in the reviews section */
+.new_review {
+	width: 90%;
+	margin: 10px 5px 15px 40px;
+}
+
+/* User name */
+.user {
+	margin-bottom: 7px;
+	font-family: sans-serif;
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+.user:hover {
+	text-decoration: underline;
+	color: #3333ff;
+}
+
+/* Add new review button */
+#add_review {
+	border: 1px solid #0073e6 ;
+	border-radius: 3px;
+	background-color: #0073e6;
+	color: white;
+	font-size: 11pt;
+	font-family: Tahoma;
+	padding: 6px;
+
+}
+
+#add_review:hover{
+	background-color: #0066cc;
+}
+
+/* Section with the user rating and comment */
+#data_review  {
+	margin: 10px 0px 0px 40px;
+	display: flex;
+	flex-direction: column;
+}
+
+.rvw_titles {
+	margin-top: 3px;
+	font-family: sans-serif;
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+/* User comment */
+#data_review p {
+	margin-top: 4px;
+	text-align: justify;
+	font-family: sans-serif;
+	font-size: 10pt;
+}
+
+/* Go up anchor */
+#go_up {
+	float: right;
+	font-size: 12pt;
+	font-family: Tahoma;
+	color: #0073e6;
+}
+
+#go_up:hover {
+	text-decoration: underline;
+	color: #0066cc;
+}
+	
+
+/* Pointer appearance for buttons */
+.button {
+	cursor: pointer;
+}
+
+	/*** Resizing for changes in the window size ***/
+
+/* Changes in the width */
+@media only screen and (max-width: 810px) {
+	
+	#principal{
+		width: inherit;
+	}
+	
+	#upper_part {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 30px;
+	}
+	
+	#maps {
+		width: inherit;
+	}
+	
+	#data {
+		margin: 0 0 0 0;
+		width: inherit;
+	}
+	
+	#reviews {
+		width: inherit;
+	}
+	
+	#rvw_header {
+		justify-content: space-between;
+	}
+	
+	#rvw_header h1{
+		font-size: 12pt;
+	}
+	
+	#add_review {
+		padding: 2px;
+		vertical-align: middle;
+		font-size: 10pt;
+		
+	}
+	
+	.new_review {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	
+	#data_review p {
+		width: inherit;
+		font-size: 9pt;
+	}
+	
+	.user {
+		font-size: 11pt;
+	}
+	
+	.rvw_titles {
+		font-size: 10pt;
+	}
+
+}
+
+@media only screen and (max-width: 400px){
+	
+	#rvw_header {
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	#rvw_header h1{
+		margin-bottom: 10px;
+	}
+	
+}
+
+/* Changes on the height */
+@media only screen and (max-height: 700px) {
+	
+	#principal{
+		width: 60vw;
+	}
+	
+	#upper_part {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 30px;
+	}
+	
+	#maps {
+		width: inherit;
+	}
+	
+	#data {
+		margin: 0 0 0 0;
+		width: inherit;
+	}
+	
+	#reviews {
+		width: inherit;
+	}
+	
+	#rvw_header {
+		justify-content: space-between;
+	}
+	
+	#rvw_header h1{
+		font-size: 12pt;
+	}
+	
+	#add_review {
+		padding: 2px;
+		vertical-align: middle;
+		font-size: 10pt;
+		
+	}
+	
+	.new_review {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	
+	#data_review p {
+		width: inherit;
+		font-size: 9pt;
+	}
+	
+	.user {
+		font-size: 11pt;
+	}
+	
+	.rvw_titles {
+		font-size: 10pt;
+	}
+
+}
