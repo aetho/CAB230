@@ -69,6 +69,7 @@ main {
     height: inherit;
     background-color: white;
     margin-top: 60px;
+    margin-bottom: 64px;
     padding: 30px;
     border: 1px solid lightgray;
 }
