@@ -69,6 +69,7 @@ main {
     height: inherit;
     background-color: white;
     margin-top: 60px;
+    margin-bottom: 60px;
     padding: 30px;
     border: 1px solid lightgray;
 }
@@ -340,7 +341,7 @@ main {
 }
 
 /* Changes on the height */
-/* 
+/*
 @media only screen and (max-height: 700px) {
     #principal {
         width: 60vw;
