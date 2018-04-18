@@ -20,65 +20,66 @@
 	<!-- Anchor point to go up to the top of the page-->
 	<p id="anchor"></p>
 
-	<header>
-		<div class="header-section header-content">
-			<div class="dropdown dropdown-select" id="menu">
-				<div class="dropdown-trigger" id="menu-trigger">
-					<i class="material-icons">menu</i>
-				</div>
-				<nav class="dropdown-content list" id="menu-content">
-					<a class="list-item" id="menu-home">
-						<i class="material-icons list-icon">home</i>Home
-					</a>
-					<a class="list-item" id="menu-sign-in">
-						<i class="material-icons list-icon">person</i>Sign-in
-					</a>
-					<a class="list-item" id="menu-sign-up">
-						<i class="material-icons list-icon">create</i>Sign-up
-					</a>
-				</nav>
-			</div>
+    <header>
+        <div class="header-section header-content">
+            <div class="dropdown dropdown-select" id="menu">
+                <div class="dropdown-trigger" id="menu-trigger">
+                    <i class="material-icons">menu</i>
+                </div>
+                <nav class="dropdown-content list" id="menu-content">
+                    <a class="list-item" id="menu-home">
+                        <i class="material-icons list-icon" href="./fyw_results.html">home</i>Home
+                    </a>
+                    <a class="list-item" id="menu-sign-in">
+                        <i class="material-icons list-icon">person</i>Sign-in
+                    </a>
+                    <a class="list-item" id="menu-sign-up" href="./fyw_register.html">
+                        <i class="material-icons list-icon">create</i>Sign-up
+                    </a>
+                </nav>
+            </div>
 
-			<div id="header-logo">
-				<a href="#">
-					<span>
-						<i class="material-icons">wifi</i>
-					</span>
-					<span>Find Your Wi-Fi</span>
-				</a>
-			</div>
+            <div id="header-logo">
+                <a href="./fyw_results.html">
+                    <span>
+                        <i class="material-icons">wifi</i>
+                    </span>
+                    <span>Find Your Wi-Fi</span>
+                </a>
+            </div>
 
-			<div class="dropdown" id="search">
-				<div class="dropdown-trigger" id="search-trigger">
-					<i class="material-icons">search</i>
-				</div>
-				<div class="dropdown-content" id="search-content">
-					<form action="/fyw_results.html">
-						<div class="dropdown dropdown-select" id="search-mode">
-							<div class="dropdown-trigger" id="search-mode-trigger">
-								<label>Search by</label>
-								<input name="searchMode" type="text" value="Name" readonly>
-							</div>
-							<div class="dropdown-content" id="search-mode-content">
-								<div class="list">
-									<a class="list-item">Name</a>
-									<a class="list-item">Suburb</a>
-									<a class="list-item">Rating</a>
-								</div>
-							</div>
-						</div>
-						<div id="search-field">
-							<label>Name</label>
-							<input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName">
-						</div>
-						<div id="search-submit">
-							<input type="submit" value="Search">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</header>
+            <div class="dropdown" id="search">
+                <div class="dropdown-trigger" id="search-trigger">
+                    <i class="material-icons">search</i>
+                </div>
+                <div class="dropdown-content" id="search-content">
+                    <form class="form" id="search-form" action="./fyw_results.html">
+                        <div class="dropdown dropdown-select" id="search-mode">
+                            <div class="dropdown-trigger form-field" id="search-mode-trigger">
+                                <label>Search by</label>
+                                <input name="searchMode" type="text" value="Name" readonly>
+                            </div>
+                            <div class="dropdown-content" id="search-mode-content">
+                                <div class="list">
+                                    <a class="list-item">Name</a>
+                                    <a class="list-item">Suburb</a>
+                                    <a class="list-item">Rating</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-field" id="search-field">
+                            <label>Name</label>
+                            <input type="text" placeholder="E.g. 7th Brigade Park, Chermside" name="searchName" class="required-input">
+                            <div class="form-error"></div>
+                        </div>
+                        <div id="search-submit">
+                            <input type="submit" value="Search" onclick="ValidateForm('search-form'); return false;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
 
 	<!-- Content of the page-->
 	<div id="principal">
