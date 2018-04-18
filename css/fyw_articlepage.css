@@ -1,0 +1,389 @@
+/* Find your Wi-Fi article page stylesheet */
+
+
+/* Styling for mobile/small screen sizes
+ */
+body {
+    height: 100%;
+    width: 100%;
+    /* Makes it easier to style site in such a way that it is responsive */
+    display: flex;
+    justify-content: center;
+    background-color: #cce6ff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+#map-container {
+    position: relative;
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#map {
+    height: 100%;
+}
+
+#result-list {
+    /* padding-top: 250px; */
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media only screen and (min-width: 860px) {
+    main {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100vh;
+    }
+    #map-container {
+        position: relative;
+        height: 100%;
+        order: 2;
+        z-index: 1;
+    }
+    #result-list {
+        order: 3;
+        flex-basis: 400px;
+        box-shadow: -3px 0px 6px rgba(0, 0, 0, 0.3);
+        height: 100%;
+        overflow-y: auto;
+        z-index: 2
+    }
+}
+
+/* CONTENT */
+
+/* Main */
+
+#principal {
+    width: 60vw;
+    height: inherit;
+    background-color: white;
+    margin-top: 60px;
+    padding: 30px;
+    border: 1px solid lightgray;
+}
+
+/* ------ */
+
+/* Map and wifi data (name, address, suburb and rating) */
+
+/* General div with both sections */
+
+#upper_part {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/*** Maps ***/
+
+#maps {
+    width: 100vw;
+    height: inherit;
+    margin-left: 2vw;
+    border: 5px solid lightgray;
+    /* width style color */
+    border-radius: 6px;
+}
+
+#maps iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/*** Wifi data ***/
+
+#data {
+    width: 100vw;
+    height: auto;
+    padding: 10px;
+    margin: 0 1vw 0 2vw;
+    ;
+    border: 0px solid lightgray;
+    border-radius: 7px;
+    background-color: white;
+    text-align: center;
+}
+
+#data div h5 {
+    margin-bottom: 3px;
+    font-family: 'Roboto';
+    font-size: 13pt;
+    font-style: bold;
+}
+
+/* Div with name and data of the wifi (one for each data section) */
+
+#data div {
+    margin-bottom: 10px;
+}
+
+/* Wifi info */
+
+.insert_data {
+    width: inherit;
+    height: 30px;
+    margin-bottom: 5px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px 7px 10px;
+    font-family: sans-serif;
+    font-size: 11pt;
+    font-style: normal;
+    color: #0073e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Set stars sprite as background of rating stars div*/
+
+#insert_rating {
+    background: url("images/sprite_rating_stars.png") 0 -60px;
+}
+
+/* Modify the size of the rating stars div */
+
+.rating_stars {
+    width: 105px;
+    /* Idk if we can do this. I have just look at the width
+						of the image and set the same for the div */
+    height: 20px;
+    margin: 2px 0px 6px;
+    /* Add -20px to the second parameter to change the star */
+    /* To implement this in the JS file use an array of images with the sprite */
+    background: url("images/sprite_rating_stars.png") 0 -60px;
+}
+
+/*** User reviews ***/
+
+/* General section */
+
+#reviews {
+    height: auto;
+    width: inherit;
+    border: 1px solid lightgray;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    background-color: white;
+    overflow: auto;
+}
+
+/* Section with title and add review button */
+
+#rvw_header {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 40px 3px 20px;
+    /* top right bottom left */
+}
+
+#rvw_header h1 {
+    color: #0073e6;
+    font-family: 'Roboto';
+    font-size: 17pt;
+}
+
+/* Class related to the new entrace in the reviews section */
+
+.new_review {
+    width: 90%;
+    margin: 10px 5px 15px 40px;
+}
+
+/* User name */
+
+.user {
+    margin-bottom: 7px;
+    font-family: sans-serif;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.user:hover {
+    text-decoration: underline;
+    color: #3333ff;
+}
+
+/* Add new review button */
+
+#add_review {
+    border: 1px solid #0073e6;
+    border-radius: 3px;
+    background-color: #0073e6;
+    color: white;
+    font-size: 11pt;
+    padding: 6px;
+}
+
+#add_review:hover {
+    background-color: #0066cc;
+}
+
+/* Section with the user rating and comment */
+
+#data_review {
+    margin: 10px 0px 0px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rvw_titles {
+    margin-top: 3px;
+    font-family: sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+/* User comment */
+
+#data_review p {
+    margin-top: 4px;
+    text-align: justify;
+    font-family: sans-serif;
+    font-size: 10pt;
+}
+
+/* Go up anchor */
+
+#go_up {
+    float: right;
+    font-size: 12pt;
+    font-family: Tahoma;
+    color: #0073e6;
+}
+
+#go_up:hover {
+    text-decoration: underline;
+    color: #0066cc;
+}
+
+/* Pointer appearance for buttons */
+
+.button {
+    cursor: pointer;
+}
+
+/*** Resizing for changes in the window size ***/
+
+/* Changes in the width */
+
+@media only screen and (max-width: 810px) {
+    #principal {
+        width: inherit;
+    }
+    #upper_part {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    #maps {
+        width: inherit;
+    }
+    #data {
+        margin: 0 0 0 0;
+        width: inherit;
+    }
+    #reviews {
+        width: inherit;
+    }
+    #rvw_header {
+        justify-content: space-between;
+    }
+    #rvw_header h1 {
+        font-size: 12pt;
+    }
+    #add_review {
+        padding: 2px;
+        vertical-align: middle;
+        font-size: 10pt;
+    }
+    .new_review {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    #data_review p {
+        width: inherit;
+        font-size: 9pt;
+    }
+    .user {
+        font-size: 11pt;
+    }
+    .rvw_titles {
+        font-size: 10pt;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #rvw_header {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #rvw_header h1 {
+        margin-bottom: 10px;
+    }
+}
+
+/* Changes on the height */
+/* 
+@media only screen and (max-height: 700px) {
+    #principal {
+        width: 60vw;
+    }
+    #upper_part {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    #maps {
+        width: inherit;
+    }
+    #data {
+        margin: 0 0 0 0;
+        width: inherit;
+    }
+    #reviews {
+        width: inherit;
+    }
+    #rvw_header {
+        justify-content: space-between;
+    }
+    #rvw_header h1 {
+        font-size: 12pt;
+    }
+    #add_review {
+        padding: 2px;
+        vertical-align: middle;
+        font-size: 10pt;
+    }
+    .new_review {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    #data_review p {
+        width: inherit;
+        font-size: 9pt;
+    }
+    .user {
+        font-size: 11pt;
+    }
+    .rvw_titles {
+        font-size: 10pt;
+    }
+} */
