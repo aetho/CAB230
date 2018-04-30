@@ -217,20 +217,31 @@ function ValidateField(form, field) {
         if (!hasError) {
             error.classList.remove('form-error-active');
         }
+        // console.log(!hasError);
+        // console.log(field);
+        // return true if field is valid, else false
+        return !hasError;
     }
 }
 
 /* Validate a form's required fields */
 function ValidateForm(formID) {
+    var numErrors = 0;
     var form = document.getElementById(formID);
     if (form) {
         var fields = form.getElementsByClassName('form-field');
         for (var i = 0; i < fields.length; i++) {
-            ValidateField(form, fields[i]);
+            // if field is not valid, add 1 to numErrors
+            if (!ValidateField(form, fields[i])) numErrors++;
+        }
+        // return true if form is valid, else false        
+        if (numErrors == 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
-
 
 document.addEventListener('click', function (e) {
     // Event delegation to handle dynamically added dropdowns
@@ -478,7 +489,7 @@ document.addEventListener('customChange', function (e) {
             var submitBtn = document.createElement('input');
             submitBtn.setAttribute('type', 'submit');
             submitBtn.setAttribute('value', 'Search');
-            submitBtn.setAttribute('onclick', 'ValidateForm("search-form"); return false');
+            submitBtn.setAttribute('onclick', 'return ValidateForm(\'search-form\');');
 
             // Append button to container
             submitContainer.appendChild(submitBtn);
