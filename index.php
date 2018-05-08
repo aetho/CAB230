@@ -12,16 +12,16 @@
 </head>
 
 <body>
-    <?php include("./php/header.php"); ?>
+    <?php require(dirname(__FILE__)."/php/header.php"); ?>
     <main>
         <div id="map-container">
             <div id="map"></div>
         </div>
         <div class="list" id="result-list">
-            <?php include("./php/search_results.php"); ?>
+            <?php require(dirname(__FILE__)."/php/search_results.php"); ?>
         </div>
     </main>
-    <?php include("./php/footer.php"); ?>    
+    <?php require(dirname(__FILE__)."/php/footer.php"); ?>
     <script src="./js/site_wide.js"></script>
     <script src="./js/index.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmbU9tZG4JwV1yxn5pPQzGPmMOmW1BvyQ&callback=CreateMap"></script>

@@ -217,8 +217,7 @@ function ValidateField(form, field) {
         if (!hasError) {
             error.classList.remove('form-error-active');
         }
-        // console.log(!hasError);
-        // console.log(field);
+
         // return true if field is valid, else false
         return !hasError;
     }
@@ -298,10 +297,30 @@ document.addEventListener('customChange', function (e) {
          * event is from searchModeInput before continuing
          */
         if (searchModeInput && e.target == searchModeInput && searchForm) {
+            // Variable to keep track if all DOM edit have finished
+            var DOMEditIsDone = false;
             // Remove previous search field if one exists
             if (document.getElementById('search-field')) searchForm.removeChild(document.getElementById('search-field'));
             // Remove previous search submit if one exists
             if (document.getElementById('search-submit')) searchForm.removeChild(document.getElementById('search-submit'));
+
+            // Get the loading container
+            var loader = document.getElementById('search-load');
+            loader.style.display = 'block'
+
+            /* Create submit button that will be appended to the form later*/
+            // Create submit container
+            var submitContainer = document.createElement('div');
+            submitContainer.id = 'search-submit';
+
+            // Create submit button
+            var submitBtn = document.createElement('input');
+            submitBtn.setAttribute('type', 'submit');
+            submitBtn.setAttribute('value', 'Search');
+            submitBtn.setAttribute('onclick', 'return ValidateForm(\'search-form\');');
+
+            // Append submit button to container
+            submitContainer.appendChild(submitBtn);
 
             // Create container for field
             var searchField = document.createElement('div');
@@ -310,6 +329,48 @@ document.addEventListener('customChange', function (e) {
 
             // Add relevant fields to container
             switch (searchModeInput.value.toLowerCase()) {
+                case 'nearby':
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            // Hide searchField div
+                            searchField.style.display = 'none';
+
+                            // Create hidden-input for user latitude
+                            var inputLat = document.createElement('input');
+                            inputLat.setAttribute('type', 'text');
+                            inputLat.setAttribute('name', 'userLat');
+                            inputLat.classList.add('required-input');
+                            inputLat.setAttribute('value', position.coords.latitude);
+                            inputLat.style.display = 'none';
+
+                            // Create hidden-input for user longitude                            
+                            var inputLon = document.createElement('input');
+                            inputLon.setAttribute('type', 'text');
+                            inputLon.setAttribute('name', 'userLon');
+                            inputLon.classList.add('required-input');
+                            inputLon.setAttribute('value', position.coords.longitude);
+                            inputLon.style.display = 'none';
+
+                            // Create error container
+                            var error = document.createElement('div');
+                            error.classList.add('form-error');
+                            error.style.display = 'none';
+
+                            // Append elements
+                            searchField.appendChild(inputLat);
+                            searchField.appendChild(inputLon);
+                            searchField.appendChild(error);
+                            searchForm.appendChild(searchField);
+                            searchForm.submit();
+
+                            // Append submit container to form
+                            searchForm.appendChild(submitContainer);
+
+                            // Hide loader when done
+                            loader.style.display = 'none';
+                        });
+                    }
+                    break;
                 case 'name':
                     // Create label
                     var label = document.createElement('label');
@@ -332,89 +393,89 @@ document.addEventListener('customChange', function (e) {
                     searchField.appendChild(input);
                     searchField.appendChild(error);
                     searchForm.appendChild(searchField);
+
+                    // Append submit container to form
+                    searchForm.appendChild(submitContainer);
+
+                    // Hide loader when done
+                    loader.style.display = 'none';
                     break;
                 case 'suburb':
-                    // Adding relevant classes to the container
-                    // Can't add multiple classes at once as it's not supported by IE11
-                    searchField.classList.add('dropdown');
-                    searchField.classList.add('dropdown-select');
-                    // searchField.classList.add('dropdown-select-filter');
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onload = function () {
+                        // Adding relevant classes to the container
+                        // Can't add multiple classes at once as it's not supported by IE11
+                        searchField.classList.add('dropdown');
+                        searchField.classList.add('dropdown-select');
+                        // searchField.classList.add('dropdown-select-filter');
 
-                    // Creating the trigger
-                    var trigger = document.createElement('div');
-                    trigger.classList.add('dropdown-trigger');
-                    trigger.id = 'search-field-trigger';
+                        // Creating the trigger
+                        var trigger = document.createElement('div');
+                        trigger.classList.add('dropdown-trigger');
+                        trigger.id = 'search-field-trigger';
 
-                    // Creating label that will be inside trigger
-                    var label = document.createElement('label');
-                    label.innerHTML = "Suburb";
+                        // Creating label that will be inside trigger
+                        var label = document.createElement('label');
+                        label.innerHTML = "Suburb";
 
-                    // Creating input that will be inside trigger
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'text');
-                    input.setAttribute('placeholder', 'E.g. Annerley, Forestlake, Brisbane...');
-                    input.setAttribute('name', 'searchSuburb');
-                    input.setAttribute('readonly', '');
-                    input.classList.add('required-input');
-                    input.id = 'field-input-suburb';
+                        // Creating input that will be inside trigger
+                        var input = document.createElement('input');
+                        input.setAttribute('type', 'text');
+                        input.setAttribute('placeholder', 'E.g. Annerley, Forestlake, Brisbane...');
+                        input.setAttribute('name', 'searchSuburb');
+                        input.setAttribute('readonly', '');
+                        input.classList.add('required-input');
+                        input.id = 'field-input-suburb';
 
-                    // Create error container
-                    var error = document.createElement('div');
-                    error.classList.add('form-error');
+                        // Create error container
+                        var error = document.createElement('div');
+                        error.classList.add('form-error');
 
-                    // Append label & input to trigger
-                    trigger.appendChild(label);
-                    trigger.appendChild(input);
-                    trigger.appendChild(error);
+                        // Append label & input to trigger
+                        trigger.appendChild(label);
+                        trigger.appendChild(input);
+                        trigger.appendChild(error);
 
-                    // Append trigger to container
-                    searchField.appendChild(trigger);
+                        // Append trigger to container
+                        searchField.appendChild(trigger);
 
-                    // Creating dropdown content container
-                    var dropdownContent = document.createElement('div');
-                    dropdownContent.classList.add('dropdown-content');
-                    dropdownContent.id = "search-field-content";
+                        // Creating dropdown content container
+                        var dropdownContent = document.createElement('div');
+                        dropdownContent.classList.add('dropdown-content');
+                        dropdownContent.id = "search-field-content";
 
-                    // Creating list container
-                    var list = document.createElement('div');
-                    list.classList.add('list');
+                        // Creating list container
+                        var list = document.createElement('div');
+                        list.classList.add('list');
 
-                    // Hardcoded suburbs (Removed postcodes)
-                    var suburbs = [
-                        'Use my location',
-                        'Annerley', 'Ascot', 'Ashgrove',
-                        'Banyo', 'Bellbowrie', 'Bracken Ridge',
-                        'Brisbane', 'Bulimba', 'Calamvale',
-                        'Carina', 'Carindale', 'Chermside',
-                        'Clayfield', 'Coopers Plains', 'Corinda',
-                        'Everton Park', 'Fairfield', 'Fitzgibbon',
-                        'Forest Lake', 'Grange', 'Hamilton',
-                        'Holland Park', 'Holland Park West', 'Inala',
-                        'Indooroopilly', 'Kenmore', 'MacGregor',
-                        'Mitchelton', 'Mt Gravatt', 'Mt Ommaney',
-                        'New Farm', 'Nundah', 'Paddington',
-                        'Sandgate', 'Seventeen Mile Rocks', 'St Lucia',
-                        'Stones Corner', 'Sunnybank Hills', 'Toowong',
-                        'Upper Mount Gravatt', 'West End', 'Wynnum',
-                        'Zillmere'
-                    ]
+                        var suburbs = JSON.parse(this.responseText);
 
-                    for (var i = 0; i < suburbs.length; i++) {
-                        // Creating a list item for each suburb
-                        var listItem = document.createElement('a');
-                        listItem.classList.add('list-item');
-                        listItem.innerHTML = suburbs[i];
-                        // Append list item to list
-                        list.appendChild(listItem);
-                    }
+                        for (var i = 0; i < suburbs.length; i++) {
+                            // Creating a list item for each suburb
+                            var listItem = document.createElement('a');
+                            listItem.classList.add('list-item');
+                            listItem.innerHTML = suburbs[i]['Suburb'];
+                            // Append list item to list
+                            list.appendChild(listItem);
+                        }
+    
+                        // Append list to content container
+                        dropdownContent.appendChild(list);
+                        // Append content container to field container
+                        searchField.appendChild(dropdownContent);
+    
+                        // Append field container to search content form
+                        searchForm.appendChild(searchField);
 
-                    // Append list to content container
-                    dropdownContent.appendChild(list);
-                    // Append content container to field container
-                    searchField.appendChild(dropdownContent);
+                        // Append submit container to form
+                        searchForm.appendChild(submitContainer);
+                        
+                        // Hide loader when done
+                        loader.style.display = 'none';
+                    };
 
-                    // Append field container to search content form
-                    searchForm.appendChild(searchField);
+                    xmlhttp.open("GET", "./../php/get_suburbs.php", true);
+                    xmlhttp.send();
                     break;
                 case 'rating':
                     // Adding relevant classes to the container
@@ -478,24 +539,14 @@ document.addEventListener('customChange', function (e) {
 
                     // Append field container to search content form
                     searchForm.appendChild(searchField);
+
+                    // Append submit container to form
+                    searchForm.appendChild(submitContainer);
+
+                    // Hide loader when done
+                    loader.style.display = 'none';
                     break;
             }
-
-            // Create submit container
-            var submitContainer = document.createElement('div');
-            submitContainer.id = 'search-submit';
-
-            // Create submit button
-            var submitBtn = document.createElement('input');
-            submitBtn.setAttribute('type', 'submit');
-            submitBtn.setAttribute('value', 'Search');
-            submitBtn.setAttribute('onclick', 'return ValidateForm(\'search-form\');');
-
-            // Append button to container
-            submitContainer.appendChild(submitBtn);
-
-            // Append container to form
-            searchForm.appendChild(submitContainer);
         }
     }
 

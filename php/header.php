@@ -5,13 +5,13 @@
                 <i class="material-icons">menu</i>
             </div>
             <nav class="dropdown-content list" id="menu-content">
-                <a class="list-item" id="menu-home"  href="./fyw_results.html">
+                <a class="list-item" id="menu-home"  href="./index.php">
                     <i class="material-icons list-icon">home</i>Home
                 </a>
                 <a class="list-item" id="menu-sign-in">
                     <i class="material-icons list-icon">person</i>Sign-in
                 </a>
-                <a class="list-item" id="menu-sign-up" href="./fyw_register.html">
+                <a class="list-item" id="menu-sign-up" href="./register.php">
                     <i class="material-icons list-icon">create</i>Sign-up
                 </a>
             </nav>
@@ -31,6 +31,9 @@
                 <i class="material-icons">search</i>
             </div>
             <div class="dropdown-content" id="search-content">
+                <div class="load-container" id="search-load">
+                    <div class="load-spinner"></div>
+                </div>
                 <form class="form" id="search-form" action="./index.php">
                     <div class="dropdown dropdown-select form-field" id="search-mode">
                         <div class="dropdown-trigger" id="search-mode-trigger">
@@ -40,6 +43,7 @@
                         <div class="dropdown-content" id="search-mode-content">
                             <div class="list">
                                 <a class="list-item">Name</a>
+                                <a class="list-item">Nearby</a>
                                 <a class="list-item">Suburb</a>
                                 <a class="list-item">Rating</a>
                             </div>

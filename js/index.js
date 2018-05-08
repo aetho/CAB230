@@ -19,12 +19,14 @@ function CenterMap(map) {
                 lat: coords.latitude,
                 lng: coords.longitude
             }
-            map.setCenter(latLng);
 
             var marker = new google.maps.Marker({
                 position: latLng,
-                map: map
+                map: map,
+                title: 'Me'
             });
+
+            map.setCenter(latLng);
 
             map.setZoom(12);
         });
@@ -34,11 +36,10 @@ function CenterMap(map) {
 }
 
 function AddResultsMarkers(map) {
-    
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function () {
         var rows = JSON.parse(this.responseText);
-        
+        // console.log(rows);
         for (var i = 0; i < rows.length; i++) {
             var name, lat, lng;
             name =  rows[i]['Wifi Hotspot Name'];
