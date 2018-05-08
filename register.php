@@ -12,44 +12,19 @@
 </head>
 
 <body>
-    <div class="multi-pulse-container">
-        <div class="pulse"></div>
-    </div>
     <?php require(dirname(__FILE__)."/php/header.php"); ?>
     <main>
-        <form class="form" id="sign-up-form">
-            <div class="form-field" id="first-name-field">
-                <label class="h5">First Name</label>
-                <input type="text" placeholder="John" class="text-only-input required-input">
-                <div class="form-error"></div>
-            </div>
-            <div class="form-field" id="last-name-field">
-                <label class="h5">Last Name</label>
-                <input type="text" placeholder="Smith" class="text-only-input required-input">
-                <div class="form-error"></div>
-            </div>
-            <div class="form-field" id="email-field">
-                <label class="h5">Email</label>
-                <input type="text" placeholder="john@email.com" class="email-input required-input">
-                <div class="form-error"></div>
-            </div>
-            <div class="form-field" id="password-field">
-                <label class="h5">Password</label>
-                <input type="password" placeholder="Password" class="password-input required-input">
-                <div class="form-error"></div>
-            </div>
-            <div class="form-field" id="password-confirm-field">
-                <label class="h5">Confirm Password</label>
-                <input type="password" placeholder="Confirm password" class="password-confirm-input required-input">
-                <div class="form-error"></div>
-            </div>
-            <div class="form-field" id="submit-field">
-                <input type="submit" value="Sign up" onclick="ValidateForm('sign-up-form'); return false;">
-            </div>
-        </form>
+        <div id="map-container">
+            <div id="map"></div>
+            <div id="map-overlay"></div>
+            <div class="multi-pulse-container"></div>
+        </div>
+        <?php require(dirname(__FILE__)."/php/registration_form.php"); ?>    
     </main>
     <?php require(dirname(__FILE__)."/php/footer.php"); ?>    
     <script src="./js/site_wide.js"></script>
+    <script src="./js/register.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmbU9tZG4JwV1yxn5pPQzGPmMOmW1BvyQ&callback=CreateMap"></script>    
 </body>
 
 </html>

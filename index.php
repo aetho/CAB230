@@ -16,6 +16,9 @@
     <main>
         <div id="map-container">
             <div id="map"></div>
+            <div class="load-container" id="map-load">
+                <div class="load-spinner"></div>
+            </div>
         </div>
         <div class="list" id="result-list">
             <?php require(dirname(__FILE__)."/php/search_results.php"); ?>

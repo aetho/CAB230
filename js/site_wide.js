@@ -368,7 +368,7 @@ document.addEventListener('customChange', function (e) {
 
                             // Hide loader when done
                             loader.style.display = 'none';
-                        });
+                        }, function(err){console.log(err)}, {maximumAge: 3 * 60 * 1000});
                     }
                     break;
                 case 'name':

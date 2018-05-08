@@ -18,7 +18,7 @@
         </div>
 
         <div id="header-logo">
-            <a href="./fyw_results.html">
+            <a href="./index.php">
                 <span>
                     <i class="material-icons">wifi</i>
                 </span>

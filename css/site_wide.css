@@ -301,6 +301,10 @@ input[type="submit"] {
      */
     position: absolute;
 
+    /* Position contianer */
+    top: 0;
+    left: 0;
+
     /* Setting background */
     background-color: rgba(0, 0, 0, 0.3);
     
@@ -465,11 +469,6 @@ input[type="submit"] {
 #footer-contact-us {
     height: 64px;
     justify-content: center;
-}
-
-#search-load{
-    /* re-position because of padding */
-    transform: translate(-16px, -16px);
 }
 
 /* Styling for desktop/big screens sizes
