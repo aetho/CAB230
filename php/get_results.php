@@ -72,8 +72,15 @@
             case 'Rating':
                 if(isset($_GET['searchRating'])){
                     $value = $_GET['searchRating'];
+                    $value = $value - 1;
                     // Get items with rating greater or equal to specified rating (sorted in descending order)
-                    $stmt = $pdo->prepare("SELECT * FROM items WHERE `Rating` >= :fieldValue ORDER BY `Rating` DESC");
+                    $stmt = $pdo->prepare(
+                        "SELECT * FROM (
+                            SELECT avg(rating) as avgRating, itemID
+                            FROM reviews
+                            GROUP BY itemID
+                        ) as ratings, items WHERE avgRating >= :fieldValue AND ratings.itemID = items.ID;"
+                    );
                     $stmt->bindParam(':fieldValue', $value);
                     $stmt->execute();
                     $result = $stmt->fetchAll();
