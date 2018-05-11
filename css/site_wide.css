@@ -223,7 +223,6 @@ input[type="submit"] {
 .form-error {
     display: none;
     width: 100%;
-    height: 32px;
     margin-top: 8px;
     padding: 8px;
     /* Set box-sizing mode to border box to include padding

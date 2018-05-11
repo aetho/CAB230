@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/site_wide.css">
     <link rel="stylesheet" href="./css/auth.css">
-    <title>Find your Wi-Fi - Register</title>
+    <title>Find your Wi-Fi - Login</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
             <div id="map-overlay"></div>
             <div class="multi-pulse-container"></div>
         </div>
-        <?php require(dirname(__FILE__)."/php/sign_up_form.php"); ?>    
+        <?php require(dirname(__FILE__)."/php/sign_in_form.php"); ?>    
     </main>
     <?php require(dirname(__FILE__)."/php/footer.php"); ?>    
     <script src="./js/site_wide.js"></script>

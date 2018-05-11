@@ -87,6 +87,6 @@
         }
     }
 
-    // Echo so AJAX requests also get the data
+    // Echo so XMLHttpRequest() requests can also get the data
     echo json_encode($result);
 ?>

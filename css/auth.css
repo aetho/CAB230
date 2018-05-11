@@ -15,7 +15,7 @@ input[type=password] {
 }
 
 
-#sign-up-form .form-field {
+#sign-up-form .form-field, #sign-in-form .form-field, #submit-field {
     padding: 0px 16px;
     padding-bottom: 20px;
     width: 100%;
@@ -28,7 +28,7 @@ input[type=password] {
     justify-content: center;
 }
 
-#sign-up-form {
+#sign-up-form, #sign-in-form {
     margin-top: 32px;
     display: flex;
     flex-wrap: wrap;
@@ -63,7 +63,7 @@ input[type=password] {
         background-color: #2196f3;
         animation: pulse 5s infinite;
     }
-    #sign-up-form {
+    #sign-up-form, #sign-in-form {
         position: fixed;
         top: 50%;
         left: 50%;
@@ -93,7 +93,7 @@ input[type=password] {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.5);
         z-index: 3;
     }
 }

@@ -166,7 +166,7 @@ function ValidateField(form, field) {
     // Validate email-inputs
     if (input.classList.contains('email-input')) {
         // Check if input value follows format of an email address
-        if (!input.value.match(/^[a-zA-Z](\w|\.)+@[a-zA-Z]+\.[a-zA-Z]+$/)) {
+        if (!input.value.match(/^[a-zA-Z](\w|\.)*@[a-zA-Z]+\.[a-zA-Z]+$/)) {
             if (error) {
                 hasError = true;
                 error.innerHTML = 'Please enter a valid email.';
@@ -225,18 +225,24 @@ function ValidateField(form, field) {
 
 /* Validate a form's required fields */
 function ValidateForm(formID) {
+    console.log(formID);
     var numErrors = 0;
     var form = document.getElementById(formID);
     if (form) {
         var fields = form.getElementsByClassName('form-field');
         for (var i = 0; i < fields.length; i++) {
             // if field is not valid, add 1 to numErrors
-            if (!ValidateField(form, fields[i])) numErrors++;
+            if (!ValidateField(form, fields[i])){
+                numErrors++;
+                console.log(fields[i]);   
+            }
         }
         // return true if form is valid, else false        
         if (numErrors == 0) {
+            console.log("True: "+numErrors);
             return true;
         } else {
+            console.log("False: "+numErrors);
             return false;
         }
     }

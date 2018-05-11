@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <header>
     <div class="header-section header-content">
         <div class="dropdown dropdown-select" id="menu">
@@ -8,12 +10,21 @@
                 <a class="list-item" id="menu-home"  href="./index.php">
                     <i class="material-icons list-icon">home</i>Home
                 </a>
-                <a class="list-item" id="menu-sign-in">
-                    <i class="material-icons list-icon">person</i>Sign-in
-                </a>
-                <a class="list-item" id="menu-sign-up" href="./register.php">
-                    <i class="material-icons list-icon">create</i>Sign-up
-                </a>
+                <?php
+                    if(!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']){
+                        echo'<a class="list-item" id="menu-sign-in" href="./login.php">'.
+                                '<i class="material-icons list-icon">person</i>Login'.
+                            '</a>';
+
+                        echo'<a class="list-item" id="menu-sign-up" href="./register.php">'.
+                                '<i class="material-icons list-icon">create</i>Register'.
+                            '</a>';
+                    }else{
+                        echo'<a class="list-item" id="menu-sign-up" href="./php/logout.php">'.
+                                '<i class="material-icons list-icon">clear</i>Logout'.
+                            '</a>';
+                    }
+                ?>
             </nav>
         </div>
 

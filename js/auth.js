@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(e){
     var pulseContainer = document.getElementsByClassName('multi-pulse-container');
     if(pulseContainer.length > 0){
-        var nPulse = 24;
+        var nPulse = 12;
         var pulseArray = [];
 
         for(var i = 0; i < nPulse; i++){
