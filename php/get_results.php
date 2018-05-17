@@ -72,7 +72,6 @@
             case 'Rating':
                 if(isset($_GET['searchRating'])){
                     $value = $_GET['searchRating'];
-                    $value = $value - 1;
                     // Get items with rating greater or equal to specified rating (sorted in descending order)
                     $stmt = $pdo->prepare(
                         "SELECT * FROM (

@@ -5,9 +5,10 @@
         for ($j = 0; $j < 10; $j++){
             $itemID = $i;
             $date = date("Y-m-d");
-            $userID = 11;
-            $content = "Lorem ipsum dolor sit amet.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-            $rating = rand(1,5);
+            $userID = 11; // $_SESSION['userID'];
+
+            $content = "Lorem ipsum dolor sit amet.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."; // $_POST['reviewText']
+            $rating = rand(1,5); // $_POST[rating]
 
             $stmt = $pdo->prepare("INSERT INTO reviews (itemID, date, userID, content, rating) VALUES (:itemID, :date, :userID, :content, :rating);");
             $stmt->bindParam(':itemID', $itemID);

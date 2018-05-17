@@ -528,7 +528,7 @@ document.addEventListener('customChange', function (e) {
                     var list = document.createElement('div');
                     list.classList.add('list');
 
-                    for (var i = 5; i > 0; i--) {
+                    for (var i = 5; i >= 0; i--) {
                         // Creating list item
                         var listItem = document.createElement('a');
                         listItem.classList.add('list-item');

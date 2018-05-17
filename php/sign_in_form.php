@@ -43,7 +43,7 @@
                 $pwdHash = $stmt[0]['pwd'];
                 if(password_verify($pwd, $pwdHash)){
                     // session_start();
-                    $_SESSION['userID'] = $stmt[0]['id'];
+                    $_SESSION['userID'] = $stmt[0]['id']; // User's ID
                     $_SESSION['loggedIn'] = true;
                     header("Location: ../index.php");
                 };
