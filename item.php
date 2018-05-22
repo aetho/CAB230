@@ -25,7 +25,7 @@
 		ob_end_clean();
 	?>
 
-	<title>Find your Wi-Fi - <?php echo $itemResult[0]['Wifi Hotspot Name'] ?></title>
+	<title>FYW - <?php echo $itemResult[0]['Wifi Hotspot Name'] ?></title>
 </head>
 
 <body>

@@ -1,8 +1,10 @@
-<!-- 
-    Code to calculate distance was refactored to work for the context of the website.
-    Original: http://www.movable-type.co.uk/scripts/latlong.html
--->
 <?php
+    /* 
+     *  Code to calculate distance was refactored to work for the context of the website.
+     *  Original: http://www.movable-type.co.uk/scripts/latlong.html
+     */
+
+
     // Function to calculate distance between two lat, lng coordinates
     function DistBetween($lat1, $lon1, $lat2, $lon2) {
         $Radius = 6371 * pow(10,3);

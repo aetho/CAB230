@@ -131,18 +131,22 @@ input[type="submit"] {
 
 .h1 {
     font-size: 2em;
+    margin-bottom: 8px;
 }
 
 .h2 {
     font-size: 1.8em;
+    margin-bottom: 6px;
 }
 
 .h3 {
     font-size: 1.6em;
+    margin-bottom: 4px;
 }
 
 .h4 {
     font-size: 1.4em;
+    margin-bottom: 2px;
 }
 
 .h5 {

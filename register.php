@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/site_wide.css">
     <link rel="stylesheet" href="/css/auth.css">
-    <title>Find your Wi-Fi - Register</title>
+    <title>FYW - Register</title>
 </head>
 
 <body>
