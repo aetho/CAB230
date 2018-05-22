@@ -45,11 +45,14 @@
         if(isset($errors['isValid']) && !$errors['isValid']){
             foreach($errors as $error => $value){
                 if($value == true){
+                    // if error is true then echo the message
                     echo "<div class=\"form-error form-error-active\">$msg[$error]</div>";
+                    // break out of loop because only one error should be shown at a time.
                     break;
                 }
             }
         }else{
+            // echo empty error form if so errors
             echo "<div class=\"form-error\"></div>";
         }
     }

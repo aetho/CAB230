@@ -1,4 +1,5 @@
 main {
+    /* Change display to flex so that it's easier to position/align items */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -10,94 +11,138 @@ input[type=password] {
     width: 100%;
 }
 
-.pulse{
-    display: none;
-}
-
-
 #sign-up-form .form-field, #sign-in-form .form-field, #submit-field {
+    /* Whitespace */
     padding: 0px 16px;
     padding-bottom: 20px;
+    
     width: 100%;
+    
+    /* Change display to flex to use flex-wrap */
     display: flex;
     flex-wrap: wrap;
+
+    /* Change box-sizing mode so that margin/padding is included in element dimensions */
     box-sizing: border-box;
 }
 
 #submit-field {
+    /* Center submit button */
     justify-content: center;
 }
 
 #sign-up-form, #sign-in-form {
+    /* Whitespace */
     margin-top: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    /* Cap wdith */
     max-width: 300px;
 }
 
 
 @media only screen and (min-width: 500px) {
     .multi-pulse-container {
+        /* Set position to fixed so that container remain in place */
         position: fixed;
+        /* Set dimensions to 100% of parent */
         width: 100%;
         height: 100%;
+        /* z-index to 2 so that it is above the map */
         z-index: 2;
         background-color: #81d4fa;
     }
+
     .pulse .material-icons {
+        /* Style pulse icons */
         color: #ffffff;
         margin: 0px;
     }
+
     .pulse {
+        /* Display to flex to easily align content */
         display: flex;
         align-items: center;
         justify-content: center;
+
+        /* Set position to fiex so that pulse icons remain in place */
         position: fixed;
+
+        /* Setting pulse dimensions */
         width: 40px;
         height: 40px;
+        
         border: 4px solid #ffffff;
-        z-index: 0;
-        border-radius: 50%;
-        box-shadow: 0 0 0 rgba(33, 150, 243, 0.4);
         background-color: #2196f3;
+        
+        /* Set border-radius to 50% to make it look like a circle */
+        border-radius: 50%;
+
+        /* Set box-shadow that will be animated */
+        box-shadow: 0 0 0 rgba(33, 150, 243, 0.4);
+
+        /* Play animation */
         animation: pulse 5s infinite;
     }
+
     #sign-up-form, #sign-in-form {
+        /* position to fixed so that form remain in place */
         position: fixed;
+        
+        /* Centering form */
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        /* Whitespace */
         margin-top: 0px;
         padding-top: 16px;
+
+        /* Box shadow to give elevation form elevation */
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+
+
         background-color: #ffffff;
         border-radius: 5px;
-        z-index: 5;
         
+        /* z-index 5 so that form is above everything */
+        z-index: 5;
     }
+
     #map-container {
+        /* Set position to fixed so that it remains in place */
         position: fixed;
+        /* Positioning element */
         top: 0;
         left: 0;
+        /* Setting map container dimensions */
         width: 100%;
         height: 100vh;
     }
+
     #map {
+        /* z-index 1 so that map is below most elements */
         z-index: 1;
+        
+        /* Setting map height */
         height: 100vh;
     }
+
     #map-overlay {
+        /* Set position to fixed so that it remains in place */
         position: fixed;
+        /* Positioning element */
         top: 0;
         left: 0;
+        /* Setting overlay dimensions */
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        /* Make overlay 70% transparent so users don't get distracted by the pulses */
+        background-color: rgba(0, 0, 0, 0.7);
+        /* z-index 3 so that over is below form but above everything else */
         z-index: 3;
     }
 }
 
+/* Set keyframes for pulse animation */
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);

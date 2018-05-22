@@ -1,6 +1,6 @@
 <?php
-    require_once(dirname(__FILE__).'/connect_to_db.php'); // Bringing in connection to database
-    require(dirname(__FILE__).'/validate.php');
+    require_once(dirname(__FILE__).'/connect_to_db.php'); // Importing connection to database
+    require(dirname(__FILE__).'/validate.php'); // Importing validate
 
     if(count($_POST)>0){
         // Variable to store all form fields and their errors
@@ -66,26 +66,34 @@
                     "VALUES(:fName, :lName, :email, :pwd)"
                 );
 
+                // Bind parameters
                 $stmt->bindParam(':fName', $fName);
                 $stmt->bindParam(':lName', $lName);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':pwd', $pwdHash);
 
+                // Execute statement
                 $stmt->execute();
-                header("Location: ../login.php");
+
+                // Redirect to login page
+                header("Location: {$_SERVER['HTTP_HOST']}/login.php");
             }
         }
     }
 ?>
 
-
+<!-- Sign-up form container posting to itself -->
 <form class="form" id="sign-up-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+    <!-- firstname field container -->
     <div class="form-field" id="first-name-field">
         <label class="h5">First Name</label>
+        <!-- Input field prefilled with $_POST data -->
         <input type="text" name="fName" placeholder="John" class="text-only-input required-input"
             value = <?php if(isset($_POST['fName'])) echo $_POST['fName']; ?>
         >
         <?php
+            // echo error if an error exists
+            // else echo empty error container
             if(isset($fields['fName'])){
                 EchoError($fields['fName'], array(
                     'empty' => "Please fill this field.",
@@ -96,12 +104,16 @@
             }
         ?>
     </div>
+    <!-- lastname field container -->
     <div class="form-field" id="last-name-field">
         <label class="h5">Last Name</label>
+        <!-- Input field prefilled with $_POST data -->
         <input type="text" name="lName" placeholder="Smith" class="text-only-input required-input"
             value = <?php if(isset($_POST['lName'])) echo $_POST['lName']; ?>
         >
         <?php
+            // echo error if an error exists
+            // else echo empty error container
             if(isset($fields['lName'])){
                 EchoError($fields['lName'], array(
                     'empty' => "Please fill this field.",
@@ -112,12 +124,16 @@
             }
         ?>
     </div>
+    <!-- email field container -->
     <div class="form-field" id="email-field">
         <label class="h5">Email</label>
+        <!-- Input field prefilled with $_POST data -->
         <input type="text" name="email" placeholder="john@email.com" class="email-input required-input"
             value = <?php if(isset($_POST['email'])) echo $_POST['email']; ?>
         >
         <?php
+            // echo error if an error exists
+            // else echo empty error container
             if(isset($fields['email'])){
                 EchoError($fields['email'], array(
                     'empty' => "Please fill this field.",
@@ -129,12 +145,16 @@
             }
         ?>
     </div>
+    <!-- password field container -->
     <div class="form-field" id="password-field">
         <label class="h5">Password</label>
+        <!-- Input field prefilled with $_POST data -->
         <input type="password" name="pwd" placeholder="Password" class="password-input required-input"        
             value = <?php if(isset($_POST['pwd'])) echo $_POST['pwd']; ?>
         >
         <?php
+            // echo error if an error exists
+            // else echo empty error container
             if(isset($fields['pwd'])){
                 EchoError($fields['pwd'], array(
                     'empty' => "Please fill this field.",
@@ -145,12 +165,16 @@
             }
         ?>
     </div>
+    <!-- password confirm field container -->
     <div class="form-field" id="password-confirm-field">
         <label class="h5">Confirm Password</label>
+        <!-- Input field prefilled with $_POST data -->
         <input type="password" name="pwdConf" placeholder="Confirm password" class="password-confirm-input required-input"
             value = <?php if(isset($_POST['pwdConf'])) echo $_POST['pwdConf']; ?>
         >
         <?php
+            // echo error if an error exists
+            // else echo empty error container
             if(isset($fields['pwdConf'])){
                 EchoError($fields['pwdConf'], array(
                     'empty' => "Please fill this field.",
@@ -161,6 +185,7 @@
             }
         ?>
     </div>
+    <!-- Submit/Sign-in button -->
     <div id="submit-field">
         <input type="submit" value="Sign up" onclick="return ValidateForm('sign-up-form')">
     </div>

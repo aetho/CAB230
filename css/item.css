@@ -1,0 +1,138 @@
+.microdata {
+    /* Hide microdata */
+    display: none;
+}
+
+.item-detail {
+    /* Whitespace */
+    padding: 16px;
+    padding-bottom: 8px;
+}
+
+table td:first-child {
+    /* Align first column text */
+    text-align: end;
+    /* Whitespace */
+    padding-right: 8px;
+    padding-bottom: 4px;
+    /* Emphaise first column text*/
+    font-weight: bold;
+}
+
+.review {
+    /* Whitespace */
+    padding: 16px;
+
+    /* Separator */
+    border-top: 1px solid #888888;
+    border-bottom: 1px solid #888888;
+}
+
+.review-user,
+.review-rating,
+.review-date {
+    /* Aligning review user, rating and date*/
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.review-date {
+    /* Aligning review date */
+    justify-content: flex-end;
+}
+
+.review-user>.material-icons,
+.review-rating>.material-icons {
+    /* Styling icon */
+    color: #888888;
+    font-size: 2em;
+    width: 32px;
+    height: 32px;
+    /* Whitespace */
+    padding: 0;
+    padding-right: 8px;
+}
+
+.review span {
+    color: #888888;
+    font-size: 0.8em;
+    /* Whitespace */
+    padding: 0;
+}
+
+.review-content {
+    /* Whitespace */
+    padding: 8px 0;
+}
+
+.login-reminder {
+    height: 32px;
+    background-color: #ffffff;
+    /* Making sure it stands out */
+    border: 5px double #2196f3;
+    /* Aligning text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#map {
+    height: 240px;
+    width: 100vw;
+    /* Capping width so that there is no horizontal scroll
+     * when vertical scroll bar is present
+     */
+    max-width: 100%;
+}
+
+#review-form {
+    /* Whitespace */
+    margin-top: 16px;
+    padding: 16px;
+}
+
+#review-field textarea {
+    width: 100vw;
+    /* Capping width so that there is no horizontal scroll
+     * when vertical scroll bar is present
+     */
+    max-width: 100%;
+    /* Set min-height in case user wants to resize beyond this point */
+    min-height: 100px;
+    /* Whitespace */
+    margin-top: 8px;
+    /* change box-sizing mode so that margin and padding is included in element
+     * dimensions
+     */
+    box-sizing: border-box;
+    /* Disable horizontal resize */
+    resize: vertical;
+}
+
+#post-field {
+    /* Whitespace */
+    margin: 8px 0;
+}
+
+@media only screen and (min-width: 860px) {
+    main {
+        width: 100%;
+        max-width: 860px;
+        /* Centering */
+        margin: 0 auto;
+        /* Set box shadow for elevation effect */
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    .item {
+        /* Change display to flex */
+        display: flex;
+        /* Postion item details */
+        align-items: flex-end;
+    }
+    #map {
+        /* Change map size */
+        width: 480px;
+        height: 360px;
+    }
+}

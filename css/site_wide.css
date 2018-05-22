@@ -51,10 +51,12 @@ footer {
 }
 
 header{
+    /* Giving header a box shadow to give elevation effect*/
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 footer {
+    /* Giving footer a box shadow to give elevation effect*/
     box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.3);
     
     /* Unset top */
@@ -73,6 +75,9 @@ a:visited {
 }
 
 label {
+    /* Make labels grey so they don't draw as much attention
+     * as the item it's labelling
+     */
     color: #808080;
 }
 
@@ -115,6 +120,10 @@ input[type="submit"] {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
     /* Visual feedback that this is a button */
     cursor: pointer;
+}
+
+.hidden-input {
+    display: none;
 }
 
 /* Setting up some font size classes
@@ -194,21 +203,27 @@ input[type="submit"] {
 }
 
 .list-item-multiline:hover {
-    /* box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); */
+    /* Visual feedback */
     background-color: rgba(0, 0, 0, 0.1);
 }
 
 .list-item-row {
+    /* Whitespace */
     padding: 8px 0px;
+    /* Make element width 100% of parent/container width */  
     width: 100%;
 }
 
 .list-item-title {
+    /* Style element so that it looks nice */
     font-size: 1em;
     color: #000000;
 }
 
 .list-item-subheading {
+    /* Style element so that it doesn't draw as much attention
+     * as the title.
+     */
     padding: 0;
     font-size: 0.80em
 }
@@ -229,6 +244,7 @@ input[type="submit"] {
      * in width and height
      */
     box-sizing: border-box;
+    /* Thick red border to draw attention to the error */
     border: 2px solid #f44336;
     border-radius: 3px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
@@ -458,6 +474,7 @@ input[type="submit"] {
 }
 
 #footer-list {
+    /* Styling the list so that it fits its context */
     display: flex;
     background-color: transparent;
     color: #ffffff;
@@ -557,6 +574,6 @@ input[type="submit"] {
         margin-right: 16px;
     }
     #footer-list {
-        width: 320px;
+        width: 160px;
     }
 }

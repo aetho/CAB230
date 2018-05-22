@@ -1,7 +1,12 @@
 main {
+    /* Set display to flex because it's easier to 
+     * position things inside a flexbox
+     */
     display: flex;
     flex-direction: column;
-    width: 100%;
+    /* Make main span 100% of the viewport */
+    width: 100vw;
+    max-width: 100%;
     height: 100vh;
 }
 
@@ -10,38 +15,44 @@ main {
     min-height: 200px;
     height: 200px;
     width: 100%;
+    /* Give map-container a box shadow to give the effect of elevation */
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 #map {
+    /* Set map height to 100% of container height */
     height: 100%;
 }
 
 #result-list {
     /* padding-top: 250px; */
     height: 100%;
+    /* Enable scrolling when content exceeds list height */
     overflow-y: auto;
 }
 
 @media only screen and (min-width: 860px) {
     main {
-        display: flex;
+        /* Change flex direction so we can make use
+         * of the extra space available on larger devices
+         */
         flex-direction: row;
-        width: 100%;
-        height: 100vh;
     }
     #map-container {
-        position: relative;
         height: 100%;
+        /* Change flex order so that map is postioned correctly */
         order: 2;
+        /* Set z-index so that map is under results */
         z-index: 1;
     }
     #result-list {
+        /* Change flex order so that result list is postioned correctly */
         order: 3;
+        /* Set width to 400px instead of the default flex width allocation */
         flex-basis: 400px;
+        /* Give result list a box shadow to give the effect of elevation */
         box-shadow: -3px 0px 6px rgba(0, 0, 0, 0.3);
-        height: 100%;
-        overflow-y: auto;
+        /* Set z-index so that map is under results */
         z-index: 2
     }
 }

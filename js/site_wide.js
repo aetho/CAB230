@@ -147,7 +147,7 @@ function CloseDropDowns(e) {
 
 // Validate field
 function ValidateField(form, field) {
-    var input = field.getElementsByTagName('input')[0];
+    var input = field.getElementsByTagName('input')[0] || field.getElementsByTagName('textarea')[0];
     var error = field.getElementsByClassName('form-error')[0];
     var hasError = false;
 
@@ -158,6 +158,18 @@ function ValidateField(form, field) {
             if (error) {
                 hasError = true;
                 error.innerHTML = 'Please use letters.';
+                error.classList.add('form-error-active');
+            }
+        }
+    }
+
+    // Validate number-only-inputs
+    if (input.classList.contains('number-only-input')) {
+        // Check if input value contains non-alphabetic characters
+        if (!input.value.match(/^[0-9]+$/) || input.value.match(/\\/)) {
+            if (error) {
+                hasError = true;
+                error.innerHTML = 'Please use numbers.';
                 error.classList.add('form-error-active');
             }
         }
@@ -480,7 +492,7 @@ document.addEventListener('customChange', function (e) {
                         loader.style.display = 'none';
                     };
 
-                    xmlhttp.open("GET", "./../php/get_suburbs.php", true);
+                    xmlhttp.open("GET", "/php/get_suburbs.php", true);
                     xmlhttp.send();
                     break;
                 case 'rating':
@@ -505,6 +517,7 @@ document.addEventListener('customChange', function (e) {
                     input.setAttribute('name', 'searchRating');
                     input.setAttribute('readonly', '');
                     input.classList.add('required-input');
+                    input.classList.add('number-only-input');
                     input.id = 'field-input-rating';
 
                     // Create error container

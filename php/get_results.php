@@ -86,6 +86,7 @@
                 }
                 break;
             default:
+                // As a fallback, retrieve all results
                 $stmt = $pdo->prepare("SELECT * FROM items;");
                 $stmt->execute();
                 $result = $stmt->fetchAll();
